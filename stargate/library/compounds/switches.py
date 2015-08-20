@@ -1,5 +1,5 @@
 from library import NOT, Latch
-from starschematic import Compound, Transmitter
+from stargate import Compound, Transmitter
 
 __author__ = 'Lai Tash'
 

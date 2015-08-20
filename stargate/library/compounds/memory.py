@@ -1,6 +1,6 @@
 from library import Latch, Switch, PersistentSwitch, NOT, Informer
 from library.library import EnabledSwitch
-from starschematic import Compound, Transmitter
+from stargate import Compound, Transmitter
 
 __author__ = 'Lai Tash'
 

@@ -2,7 +2,7 @@ from library import Button, PersistentSwitch
 from library.compounds.linearcounter import LinearTimer
 from library.compounds.memory import PersistentCell, CellsIndicator, \
     RecetablePersistentCell
-from starschematic import Compound
+from stargate import Compound
 
 __author__ = 'Lai Tash'
 

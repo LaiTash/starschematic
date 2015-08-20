@@ -1,6 +1,6 @@
-from starschematic import Signaler, Receiver, MultipleAtom, SimpleAtom
-from starschematic import FirstSecondAtom
-from starschematic import value
+from stargate import Signaler, Receiver, MultipleAtom, SimpleAtom
+from stargate import FirstSecondAtom
+from stargate import value
 
 
 class AND(FirstSecondAtom):

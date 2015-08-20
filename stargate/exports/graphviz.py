@@ -1,5 +1,5 @@
 import graphviz as gv
-from starschematic import visit, value
+from stargate import visit, value
 from random import choice, seed
 
 __author__ = 'Lai Tash'

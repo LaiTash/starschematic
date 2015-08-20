@@ -1,5 +1,5 @@
 from library import NOT
-from starschematic import Compound, value, Transmitter
+from stargate import Compound, value, Transmitter
 
 
 def setup_function(function):

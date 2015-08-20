@@ -1,5 +1,5 @@
 from library import Latch, XOR
-from starschematic import Compound
+from stargate import Compound
 
 
 class JKFlipFlop(Compound):

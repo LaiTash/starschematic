@@ -1,6 +1,6 @@
 from shutil import rmtree
 from .machine import Machine
-from starschematic.exports.graphviz import GraphBuilder
+from stargate.exports.graphviz import GraphBuilder
 import os
 
 

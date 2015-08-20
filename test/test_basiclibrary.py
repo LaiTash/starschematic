@@ -1,8 +1,8 @@
 from library import AND, PersistentSwitch, Switch
 from library import NOT
 from machine import Machine
-from starschematic import Compound
-from starschematic import value
+from stargate import Compound
+from stargate import value
 
 
 def setup_function(function):

@@ -1,4 +1,4 @@
-from starschematic import Transmitter
+from stargate import Transmitter
 
 __author__ = 'Lai Tash'
 

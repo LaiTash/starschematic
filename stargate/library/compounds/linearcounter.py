@@ -1,7 +1,7 @@
 __author__ = 'Lai Tash'
 
 
-from starschematic import Compound, Transmitter
+from stargate import Compound, Transmitter
 from ..library import AND, NOT, PersistentSwitch, Timer
 
 

@@ -1,11 +1,11 @@
 from library.compounds.memory import PersistentCell, BinaryCounter, \
     RecetableBinaryCounter
 from library.compounds.switches import NegativeFlipFlop
-from starschematic import Compound
-from starschematic.library import Switch, Button, NOT, AND, Timer
-from starschematic.library.compounds.linearcounter import LinearTimer
-from starschematic.app import App
-from starschematic.library.compounds.keyboards import BitKeyboard, \
+from stargate import Compound
+from stargate.library import Switch, Button, NOT, AND, Timer
+from stargate.library.compounds.linearcounter import LinearTimer
+from stargate.app import App
+from stargate.library.compounds.keyboards import BitKeyboard, \
     AutoBitKeyboard
 
 root = Compound(None, 'Root')

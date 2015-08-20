@@ -21,6 +21,9 @@ class GraphBuilder(visit.Visitor):
         'SwitchOR': {
             'shape': 'triangle',
         },
+        'OR': {
+            'shape': 'triangle',
+        },
         'SwitchAND': {
             'shape': 'invtriangle',
         },

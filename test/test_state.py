@@ -1,8 +1,6 @@
 from unittest import TestCase
 from _schematic import State
 
-__author__ = 'Lai Tash'
-
 
 class VirtualOutput(object):
     def __init__(self, value):

@@ -1,10 +1,11 @@
-import pytest
-from library import NOT, AND, PersistentSwitch, Switch
+from library import AND, PersistentSwitch, Switch
+from library import NOT
 from machine import Machine
-from starschematic import Compound, value
+from starschematic import Compound
+from starschematic import value
 
 
-def setup_module(module):
+def setup_function(function):
     global root
     global power
     global not_

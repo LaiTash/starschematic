@@ -124,9 +124,20 @@ class Input(object):
         self.node = node
         self.inputs = []
         self.uuid = str(uuid.uuid4())
+        self._forced = None
+
+    def force(self, value=None):
+        """
+        Set or remove a forced value. If value is None, remove forced value.
+
+        :param value: forced input value or None
+        """
+        self._forced = None if value is None else int(bool(value))
 
     @property
     def value(self):
+        if self._forced is None:
+            return self._forced
         return int(any(map(value, self.inputs)))
 
     def connect(self, signal:Output):

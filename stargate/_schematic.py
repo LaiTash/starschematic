@@ -63,6 +63,8 @@ class State(object):
 
     @property
     def value(self):
+        if not self.output_states:
+            return 0
         return int(all(self.output_states))
 
     @property
@@ -366,6 +368,9 @@ class Compound(Node):
     def outputs(self):
         return self._outputs
 
+    @property
+    def value(self):
+        return int(all(map(value, self.outputs))) if self.outputs else 0
 
 class SwitchNOT(SimpleAtom):
     """ NOT switch """

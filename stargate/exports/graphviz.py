@@ -94,6 +94,11 @@ class GraphBuilder(visit.Visitor):
         self.cluster_count += 1
         graph.graph_attr.update(self.pick_style(node))
         graph.graph_attr.update({'label': node.name})
+        if value(node):
+            graph.graph_attr.update({
+                'style': 'filled',
+                'color': 'darkgreen'
+            })
         #graph.graph_attr.update({'bgcolor': '#%i33333' % random.randint(0, 99)})
         for child in node.children.values():
             self.visit(child, graph)

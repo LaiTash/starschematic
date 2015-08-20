@@ -11,7 +11,11 @@ class AND(FirstSecondAtom):
 class NOT(SimpleAtom):
     def switch(self, state, machine):
         state.default_output = not value(self.default_input)
-        pass
+
+
+class OR(FirstSecondAtom):
+    def switch(self, state, machine):
+        state.default_output = any(map(value, self.inputs))
 
 
 class XOR(FirstSecondAtom):

@@ -26,3 +26,4 @@ class PulseShortener(Compound):
         self.outputs.append(and_.default_output)
 
 
+

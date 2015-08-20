@@ -1,6 +1,6 @@
 __author__ = 'Lai Tash'
 
-from .library import AND, NOT, XOR
+from .library import AND, NOT, XOR, OR
 from .library import Button
 from .library import PersistentSwitch
 from .library import Informer

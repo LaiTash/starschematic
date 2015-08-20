@@ -1,4 +1,4 @@
-from library import Switch, AND
+from library import Switch, AND, OR
 from library.compounds.control import PulseShortener
 from library.compounds.flipflop import FlipFlop
 from stargate import Compound, Transmitter
@@ -43,10 +43,12 @@ class CounterResetter(Compound):
     def build(self):
         logicblock = Compound(self, 'LOGIC')
         shortener = PulseShortener(1, self, 'SIGNAL')
+        repeater = shortener >> OR(self, 'REPEATER').first
+        signal = shortener | repeater
         for i, bit in enumerate(self.counter.bits):
             and_ = AND(logicblock, 'A%i' % i)
             bit >> and_.first
-            shortener >> and_.second
+            signal >> and_.second
             and_ >> bit.switch
         self.inputs.append(shortener.default_input)
 

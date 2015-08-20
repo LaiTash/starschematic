@@ -19,12 +19,13 @@ def test_SyncCounter(cls):
 
 
 class CounterResetterTest(StarTest):
-    @at(40)
-    def at_40(self):
-        self.resetter.counter.enable.force(0)
+    #@at(40)
+    #def at_40(self):
+    #    self.resetter.counter.enable.force(0)
 
     @at(50)
     def at_50(self):
+        self.resetter.counter.enable.force(0)
         self.resetter.default_input.force(1)
 
     def each_tick(self, tick):

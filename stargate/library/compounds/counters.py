@@ -34,7 +34,21 @@ class SyncCounter(Compound):
         self.data = clk.default_input
 
 
+class CounterResetter(Compound):
+    def __init__(self, counter, *args, **kwargs):
+        super(CounterResetter, self).__init__(*args, **kwargs)
+        self.counter = counter
+        self.build()
 
+    def build(self):
+        logicblock = Compound(self, 'LOGIC')
+        shortener = PulseShortener(1, self, 'SIGNAL')
+        for i, bit in enumerate(self.counter.bits):
+            and_ = AND(logicblock, 'A%i' % i)
+            bit >> and_.first
+            shortener >> and_.second
+            and_ >> bit.switch
+        self.inputs.append(shortener.default_input)
 
 
 

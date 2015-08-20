@@ -15,7 +15,8 @@ class FlipFlop(Compound):
         and_ >> switch
         self.enable = and_.first
         self.data = and_.second
-        self.inputs.extend([self.enable, self.data])
+        self.switch = switch
+        self.inputs.extend([self.enable, self.data, self.switch])
         self.outputs.append(switch.default_output)
 
 

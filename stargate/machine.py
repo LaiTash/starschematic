@@ -36,6 +36,7 @@ class Machine(object):
             self.on_clock(self.clock)
         self.clock += 1
         changes = 0
+        applied = []
         for node in self.circuit:
             new_state = node.current_state.copy()
             node.switch(new_state, self)
@@ -46,7 +47,9 @@ class Machine(object):
                 else:
                     self.changed_this_tick.add(node)
                     changes += 1
-                new_state.apply()
+                    applied.append(new_state)
+        for state in applied:
+            state.apply()
         for transmitter in self.transmitters:
             transmitter.switch(transmitter.current_state, self)
             transmitter.current_state.apply()

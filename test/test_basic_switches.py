@@ -1,4 +1,3 @@
-import mock
 from library import NOT
 from starschematic import Compound, value, Transmitter
 
@@ -7,7 +6,6 @@ def setup_function(function):
     global root
     global power
     global not_
-    global machine
 
     root = Compound(None)
     power = NOT(root)

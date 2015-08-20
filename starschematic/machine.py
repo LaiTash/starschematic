@@ -1,4 +1,4 @@
-from starschematic import value, Transmitter
+from starschematic import Transmitter
 
 __author__ = 'Lai Tash'
 
@@ -7,10 +7,15 @@ class Machine(object):
     def __init__(self, root, on_tick=None, on_clock=None):
         self.on_tick = on_tick
         self.on_clock = on_clock
+
         self.root = root
-        self.circuit = root.circuit()
+        self.circuit = set()
+        self.transmitters = set()
+
+        self.changed_this_tick = set()
         self.tick = 0
         self.clock = 0
+
         self.reset()
 
     def reset(self):
@@ -47,7 +52,6 @@ class Machine(object):
             transmitter.current_state.apply()
         return changes
 
-
     def run_tick(self):
         self.changed_this_tick = set()
         self.tick += 1
@@ -56,7 +60,6 @@ class Machine(object):
             pass
         if self.on_tick:
             self.on_tick(self.tick)
-
 
     def run(self, ticks, events=None):
         events = events or {}

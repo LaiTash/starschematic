@@ -1,7 +1,5 @@
 from abc import ABCMeta, abstractproperty, abstractmethod
 from collections import OrderedDict
-from copy import deepcopy
-from operator import eq
 import uuid
 
 __author__ = 'lai'
@@ -360,10 +358,10 @@ class Compound(Node):
 
 class SwitchNOT(SimpleAtom):
     """ NOT switch """
-    def __init__(self, input, *args, **kwargs):
-        self._input_parent = input
+    def __init__(self, input_, *args, **kwargs):
+        self._input_parent = input_
         super(SwitchNOT, self).__init__(*args, **kwargs)
-        input >> self
+        input_ >> self
 
     def switch(self, state, machine):
         state.default_output = not value(self.default_input)
@@ -391,8 +389,10 @@ class SwitchAND(FirstSecondAtom):
         super_name = self._name
         if super_name:
             return super_name
-        return '(%s & %s)' % (self._input_parents[0].name,
-                            self._input_parents[1].name)
+        return '(%s & %s)' % (
+            self._input_parents[0].name, self._input_parents[1].name
+        )
+
 
 class SwitchOR(FirstSecondAtom):
     def __init__(self, first, second, *args, **kwargs):
@@ -428,8 +428,9 @@ class SwitchXOR(FirstSecondAtom):
         super_name = self._name
         if super_name:
             return super_name
-        return '(%s ^ %s)' % (self._input_parents[0].name,
-                            self._input_parents[1].name)
+        return '(%s ^ %s)' % (
+            self._input_parents[0].name, self._input_parents[1].name
+        )
 
 
 class Transmitter(SimpleAtom):

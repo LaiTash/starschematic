@@ -23,4 +23,3 @@ class App(object):
         events = events or {}
         machine = Machine(self.root, self.render)
         machine.run(ticks, events)
-

@@ -42,15 +42,19 @@ class StarTest(object):
     def each_tick(self, tick):
         pass
 
+    def each_clock(self, clock):
+        pass
+
     def get_total_ticks(self):
         return max(self.events.keys() or [0]) + 1
 
     def run_machine(self, ticks=None):
-        self.machine = Machine(self.root, on_tick=self.each_tick)
+        self.machine = Machine(self.root, on_tick=self.each_tick,
+                               on_clock=self.each_clock)
         self.machine.run(ticks or self.get_total_ticks(), self.events)
 
-    def view(self, prefix):
+    def view(self, prefix, tick=None):
+        tick = tick if tick is not None else self.machine.tick
         builder = GraphBuilder()
         graph = builder.visit(self.root)
-        graph.render(os.path.join(self.tmpdir,
-                                  'prefix_%i' % self.machine.tick))
+        graph.render(os.path.join(self.tmpdir, '%s_%i' % (prefix, tick)))

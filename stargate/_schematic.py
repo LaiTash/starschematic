@@ -136,7 +136,7 @@ class Input(object):
 
     @property
     def value(self):
-        if self._forced is None:
+        if self._forced is not None:
             return self._forced
         return int(any(map(value, self.inputs)))
 

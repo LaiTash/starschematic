@@ -61,10 +61,9 @@ def test_SwitchXOR():
 
 def test_Transmitter():
     transmitter = Transmitter(root)
-    power >> transmitter
+    transmitter.default_input.force(1)
     work(transmitter)
     assert value(transmitter) == 1
-    transmitter = Transmitter(root)
-    not_ >> transmitter
+    transmitter.default_input.force(0)
     work(transmitter)
     assert value(transmitter) == 0

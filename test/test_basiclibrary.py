@@ -26,20 +26,16 @@ def work(node):
 
 def test_AND():
     and_ = AND(root)
-    power >> and_.first
-    power >> and_.second
+    and_.first.force(1)
+    and_.second.force(1)
     work(and_)
     assert value(and_) == 1
-    and_1 = AND(root)
-    power >> and_1.first
-    not_ >> and_1.second
-    work(and_1)
-    assert value(and_1) == 0
-    and_2 = not_ & not_
-    not_ >> and_2.first
-    not_ >> and_2.second
-    work(and_2)
-    assert value(and_2) == 0
+    and_.second.force(0)
+    work(and_)
+    assert value(and_) == 0
+    and_.first.force(0)
+    work(and_)
+    assert value(and_) == 0
 
 
 def test_PersistentSwitch():
@@ -59,24 +55,19 @@ def test_PersistentSwitch():
 
 def test_Switch():
     machine.tick = 2
-    power_switch = Switch(root)
-    power_switch.prepare()
-    power_switch.activate()
     switch = Switch(root)
     switch.prepare()
+    switch.default_input.force(0)
     work(switch)
     assert value(switch) == 0
-    power_switch >> switch
-    work(power_switch)
+    switch.default_input.force(1)
     work(switch)
     assert value(switch) == 1
     work(switch)
     assert value(switch) == 1
-    power_switch.activate()
-    work(power_switch)
+    switch.default_input.force(0)
     work(switch)
     assert value(switch) == 1
-    power_switch.activate()
-    work(power_switch)
+    switch.default_input.force(1)
     work(switch)
     assert value(switch) == 0

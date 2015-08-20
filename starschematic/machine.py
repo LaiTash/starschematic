@@ -1,4 +1,4 @@
-from starschematic import value
+from starschematic import value, Transmitter
 
 __author__ = 'Lai Tash'
 
@@ -14,7 +14,11 @@ class Machine(object):
         self.reset()
 
     def reset(self):
-        self.circuit = self.root.circuit()
+        self.circuit = set(self.root.circuit())
+        self.transmitters = set([
+            node for node in self.circuit if isinstance(node, Transmitter)
+        ])
+        self.circuit.difference_update(self.transmitters)
         for node in self.circuit:
             node.prepare()
 
@@ -31,15 +35,16 @@ class Machine(object):
             new_state = node.current_state.copy()
             node.switch(new_state, self)
             if new_state != node.current_state:
-                print(node, self.tick, value(node))
                 if node in self.changed_this_tick:
-                    print("RECURSION")
-                    #new_state.apply()
-                    return 0
+                    changes = 0
+                    break
                 else:
                     self.changed_this_tick.add(node)
                     changes += 1
                 new_state.apply()
+        for transmitter in self.transmitters:
+            transmitter.switch(transmitter.current_state, self)
+            transmitter.current_state.apply()
         return changes
 
 
